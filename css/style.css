@@ -1,201 +1,186 @@
-@import url(https://fonts.googleapis.com/css2?family=Cantata+One&display=swap);
-@import url(https://fonts.googleapis.com/css2?family=Ruge+Boogie&display=swap);
-@import url(https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap);
-
-:root {
-    --w:1920;
-    --h:1080
-    --x: 0.0;
-    --y: 0.0;
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: #f1f1f1;
+    font-family: 'Courier New', Courier, monospace;
+    /*gradiant background*/
+    background: linear-gradient(45deg, #000, #fff);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    overflow: hidden;
+}
+#menu{
+    background-color: #000;
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+#menu ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly ;
+    align-items: center;
+}
+#menu ul li{
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+}
+#menu ul li:hover:not(.glowing){
+    background-color: #fff;
+    color: #000;
+}
+#menu ul li a{
+    text-decoration: none;
+    color: inherit;
+}
+#menu ul li ul{
+    display: none;
+}
+#menu ul li a{
+    height:100%;
+    width: 100%;
+}
+#nom{
+    background-color: #000;
+    font-size: 10px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    margin-top: 50px;
+    position: fixed;
+    width: 100%;
+}
+#nom, #menu{
+    box-shadow: 0 0 10px #000;
+    z-index: 1;
 }
 *{
     box-sizing: border-box;
 }
-footer{
-    height : calc(var(--h)/2 * 1px);
+#container, #centered{
+    width :100%;
+    /*height the size of the monitor*/
+    height: 100vh;
+    position: relative;
+    padding :100px;
+    overflow-y: scroll;
 }
-body{
-    /*background-image: url("https://images.squarespace-cdn.com/content/v1/551a19f8e4b0e8322a93850a/1574024073167-PRLTM8P9IEOI4Q6EZQYO/Desert.gif");
-    background-origin:center;
-    background-attachment: fixed;
-    background-size: cover;*/
-    padding : 0px;
-    margin : 0px;
-    image-rendering: pixelated;
-    background: black;
-    color:white;
-    transition: margin-top 0.3s;
-    overflow-x:hidden;
-}
-#clicker{
-    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet, red);
-    background-size: 400% 400%;
-    animation: gradient 5s infinite;
-}
-#nom{
-    font-family: 'Rubik Mono One', sans-serif;
-    color: white;
-    position: absolute;
-    z-index:99;
-    left: 0%;
-    top: 0%;
-    transition: height ease 0.3s;
-    padding:0px;
-    overflow:hidden;
-    background:black;
-}
-#nom .small{
-    font-size:smaller;
-    display: block;
-    width:100%;
+#centered #welcome{
     text-align: center;
-    text-justify:auto;
-    margin:0px;
 }
-::selection{
-    background: none;
+#centered #welcome h1{
+    font-size: 50px;
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
-#nom h1{
-    font-size: medium;
-    text-justify:auto;
-    cursor: pointer;
-    background:black;
-    background-color: blue;
-    mix-blend-mode: exclusion;
-    color:white;
-    margin:0px;
+#centered #welcome p{
+    font-size: 20px;
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
-nav{
-    /*border : solid 1px white;*/
-    background :black;
-    color: white;
-    margin:0px;
-}
-nav a{
+#centered #welcome a{
     text-decoration: none;
-    color: white;
-    transition : all 0.3s;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: 1px solid #fff;
+    border-radius: 5px;
 }
-nav ul{
-    margin : 0;
-    list-style-type: kannada;
-    padding-top: 10px;
-    padding-bottom:10px;
+#centered #welcome a:hover{
+    background-color: #fff;
+    color: #000;
 }
-nav li:hover a{
-    text-decoration: underline;
-    margin-left:5%;
+#centered #welcome ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
-#centered{
-    z-index:0;
-    width:50%;
-    font-family: 'Rubik Mono One', sans-serif;
-    position: relative;
-    top : calc((var(--h)/2) * 1px);
-    left : calc((var(--w)/2) * 1px);
-    transform: translate(-50%, -50%);
+.glowing{
+    animation: glowing 1500ms infinite;
+    background:yellow;
+    border-radius: 0.5vw;
 }
-#centered h1{
-    text-align: center;
+#centered #welcome ul li{
+    margin: 0 10px;
+    display: inline-block;
+    word-break: keep-all;
 }
-#centered h3{
-    text-align: justify;
-    color: lightgrey;
-}
-
-#content{
-    font-family: 'Rubik Mono One', sans-serif;
-    position: relative;
-    top : calc((var(--h)) * 1px);
-}
-.container {
-	width: 100%;
-	max-width: 1200px;
-	margin: 0 auto;
-	padding: 2rem 1rem;
-}
-.search-wrapper {
-	display: flex;
-	flex-direction: column;
-	gap: 1em;
-}
-.search-wrapper label {
-	font-size: 2rem;
-	font-weight: 600;
-}
-#search {
-	max-width: 30em;
-	height: 2.5rem;
-	background-color: #FFF0;
-	outline: none;
-	border: none;
-    border-bottom:solid white 1px;
-	padding: 0.5em 1em;
-    font-family: 'Rubik Mono One', sans-serif;
-	font-size: 1rem;
-	color: white;
-	transition: all 200ms ease-in-out;
-}
-#search:focus {
-	background-color: #333;
-}
-.cards-wrapper {
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-	gap: 1em;
-	margin-top: 3em;
-}
-.card {
-	background-color: #333;
-	padding: 1em;
-	display: grid;
-	gap: 0.25rem;
-}
-.name {
-	font-size: 1.5rem;
-	font-weight: 500;
-}
-.card p {
-	font-size: 0.8rem;
-	color: #aaa;
-}
-.hide {
-	display: none;
+@keyframes glowing{
+    0%{background-color: #f00; box-shadow: 0 0 3px #f00; color :yellow;}
+    50%{background-color: #000; box-shadow: 0 0 40px #f00; color:red;}
+    100%{background-color: #f00; box-shadow: 0 0 3px #f00; color:yellow;}
 }
 
-@keyframes gradient {
-    0% {
-        background-position: -200% 50%;
-        animation-timing-function:linear;
+/*responsive*/
+/*using vw or em as metrics is better*/
+@media screen and (max-width: 600px){
+    #menu{
+        height: 50px;
     }
-    100% {
-        background-position: 200% 50%;
-        animation-timing-function:cubic-bezier(1, 0, 0, 1);
-    }
-}
-@media screen and (max-width : 640px) {
-    .container {
-        padding: 2em;
-    }
-    #centered{
-        width:90%;
+    #menu ul li{
+        font-size: 15px;
     }
     #nom{
-        width:calc(1px * var(--w));
-        position:static;
+        font-size: 10px;
+        margin-top: 50px;
+        width:100%;
+        font-weight: bold;
     }
-    #menuWrap{
-        z-index:99;
-        position:fixed;
-        top:0px;
+    #centered #welcome h1{
+        font-size: 30px;
     }
-    #clicker{
-        text-align: center;
+    #centered #welcome p{
+        font-size: 15px;
     }
-}
-@media screen and (min-width : 641px){
-    #nom{
-        transform: translate(calc(-50% + 1px * var(--x)), calc(-50% + 1px * var(--y)));
-        transition: all ease 0.1s;
+    #centered #welcome a{
+        font-size: 15px;
+        padding: 5px 10px;
     }
+    .glowing{
+        border-radius: 0.5em;
+        width:30%;
+    }
+    #centered #welcome ul{
+        /*scroll bar*/
+        width :100%;
+        display : block;
+        overflow-x: scroll;
+        overflow-y: visible;
+        scrollbar-width: none;
+    }
+    #centered #welcome ul::-webkit-scrollbar{
+        display: none;
+    }
+    #centered #welcome ul li{
+        margin: 0 5px;
+        display: inline-block;
+        word-break: keep-all;
+    }
+    #mobileembeder{
+        background : black;
+        padding : 20px;
+        overflow: visible;
+        width: 300%;
+    }
+    #centered, #container{
+        padding : 0;
+        padding-top: 150px;
+    }
+    
 }
